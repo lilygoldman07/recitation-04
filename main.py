@@ -1,4 +1,5 @@
 # recitation-04
+# Lily Goldman
 
 from collections import defaultdict
 
@@ -37,7 +38,7 @@ def word_count_map(doc):
     [('i', 1), ('am', 1), ('sam', 1), ('i', 1), ('am', 1)]
     """
     ###TODO
-    pass
+    return [(token, 1) for token in doc.split()]
 
 def word_count_reduce(group):
     """
@@ -52,7 +53,9 @@ def word_count_reduce(group):
     NOTE: you should use call the `reduce` function here.
     """
     ###TODO
-    pass
+    token = group[0]
+    ones = group[1]
+    return (token, reduce(plus, 0, ones))
 
 def iterate(f, x, a):
     # done. do not change me.
@@ -119,4 +122,10 @@ def sentiment_map(doc,
     [('negative', 1), ('negative', 1)]
     """
     ###TODO
-    pass
+    result = []
+    for token in doc.split():
+        if token in pos_terms:
+            result.append(('positive', 1))
+        elif token in neg_terms:
+            result.append(('negative', 1))
+    return result
